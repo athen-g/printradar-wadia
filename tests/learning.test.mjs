@@ -1,0 +1,12 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {aggregate,predict} from '../lib/learning.ts';
+const now=Date.now();
+const row=(over={})=>({created:now-60000,crowd:1,wait:10,people:4,service:'working',device:'device-1',...over});
+test('empty and expired observations never become quiet',()=>{assert.equal(aggregate([]).crowd,null);assert.equal(aggregate([row({created:now-20*60000})],now).count,0)});
+test('only the latest report from a device counts',()=>{const a=aggregate([row(),row({created:now-120000,crowd:2})],now);assert.equal(a.count,1);assert.equal(a.crowd,1);assert.equal(a.confidence,'Unconfirmed')});
+test('agreement and disagreement are distinguished',()=>{assert.equal(aggregate([row(),row({device:'device-2'})],now).confidence,'Reports agree');assert.equal(aggregate([row(),row({device:'device-2',crowd:2})],now).confidence,'Mixed reports')});
+test('a closed status is retained',()=>{assert.equal(aggregate([row({service:'closed',wait:null,people:null})],now).service,'closed')});
+test('no history means no forecast',()=>assert.equal(predict([],now).ready,false));
+test('many reports in one window cannot satisfy training minimum',()=>{assert.equal(predict(Array.from({length:100},()=>row()),now).samples,1)});
+test('steady real-history-shaped samples pass holdout gate',()=>{const rows=Array.from({length:80},(_,i)=>row({created:now-(80-i)*4*3600000,wait:10}));const p=predict(rows,now);assert.equal(p.ready,true);assert.equal(p.minutes,10);assert.equal(p.mae,0)});

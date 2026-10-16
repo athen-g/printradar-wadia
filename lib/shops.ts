@@ -1,0 +1,16 @@
+export type Area='Inside CP'|'Outside CP'|'College exterior'|'Nearby';
+export type Shop={id:string;name:string;area:Area;address:string;x:number;y:number;lat:number;lng:number;source?:string;note:string;number:string};
+// Approximate screenshot-based placements, not surveyed entrances.
+export const shops:Shop[]=[
+ {id:'anish',number:'01',name:'Anish Automatic Xerox',area:'Inside CP',address:'Shop 11, Connaught Place · Mangaldas Road',x:538,y:253,lat:18.5351,lng:73.8794,source:'https://www.bharatibiz.com/en/anish-automatic-xerox-092702-07626',note:'Directory-listed at CP. Interior entrance and pin need on-site confirmation.'},
+ {id:'hanuman',number:'02',name:'Hanuman Enterprises & Xerox',area:'Inside CP',address:'Shop 16, Connaught Place · Mangaldas Road',x:580,y:252,lat:18.5351,lng:73.8798,source:'https://www.bharatibiz.com/en/hanuman-enterprises-xerox-089836-05774',note:'Directory-listed at CP. Interior entrance and pin need on-site confirmation.'},
+ {id:'comet-cp',number:'03',name:'Comet Cyber Cafe & Xerox',area:'Inside CP',address:'Shop 8, Connaught Place · Mangaldas Road',x:621,y:250,lat:18.5351,lng:73.8802,source:'https://in.infoaboutcompanies.com/Catalog/MH/Pune/Copy-Shop/Comet-Cyber-Cafe-_and_-Xerox',note:'Directory-listed at CP. Interior entrance and current operation need confirmation.'},
+ {id:'cp-front-west',number:'04',name:'CP street-front · west',area:'Outside CP',address:'Connaught Place frontage · Mangaldas Road',x:570,y:298,lat:18.5347,lng:73.8796,note:'Student-marked location. Shop name not yet verified.'},
+ {id:'cp-front-east',number:'05',name:'CP street-front · east',area:'Outside CP',address:'Connaught Place frontage · Mangaldas Road',x:615,y:297,lat:18.5347,lng:73.8800,note:'Student-marked location. Shop name not yet verified.'},
+ {id:'college',number:'06',name:'Engineering exterior print counter',area:'College exterior',address:'Outside the engineering building · Mangaldas Road side',x:508,y:393,lat:18.5340,lng:73.8793,note:'Student-confirmed exterior counter, not inside the building. Name pending.'},
+ {id:'shahu',number:'07',name:'Shahu Maharaj Road print shop',area:'Nearby',address:'North of Ramabai Ambedkar Road junction',x:167,y:291,lat:18.5350,lng:73.8758,note:'Student-marked location. Shop name not yet verified.'},
+ {id:'hostel',number:'08',name:'Hostel-side print shop',area:'Nearby',address:'Sassoon Road · opposite Wadia campus',x:329,y:541,lat:18.5326,lng:73.8776,note:'Student-marked location. Shop name not yet verified.'},
+ {id:'comet-bund',number:'09',name:'Comet Automatic Xerox',area:'Nearby',address:'Shop 37, Gravity / Marigold complex · Bund Garden Road',x:375,y:645,lat:18.5317,lng:73.8780,source:'https://www.bharatibiz.com/en/comet-automatic-xerox_56-086249-76545',note:'Additional listing. Pin approximate; possible relation to Comet CP needs review.'},
+ {id:'sudhir',number:'10',name:'Sudhir Automatic Xerox',area:'Nearby',address:'Shop 6, Naman Complex · B J Road, opposite Wadia',x:255,y:603,lat:18.5321,lng:73.8768,source:'https://www.justdial.com/Pune/Sudhir-Automatic-Xerox-Opp-Wadia-College-Bund-Garden-Road/020PXX20-XX20-170109183026-K4T3_BZDET',note:'Additional directory listing. Approximate placement; entrance requires confirmation.'}
+];
+export const areas:Area[]=['Inside CP','Outside CP','College exterior','Nearby'];
